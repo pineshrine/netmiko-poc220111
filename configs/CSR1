@@ -3,7 +3,6 @@ spawn ssh -x -l pocadmin 192.168.6.25
 Password: 
 
 
-
 CSR1>enable
 Password: 
 CSR1#
