@@ -1,7 +1,7 @@
 192.168.6.24
 spawn ssh -x -l pocadmin 192.168.6.24
 Password: 
-Last login: Sun Jan 16 12:59:32 2022 from 192.168.6.3
+Last login: Sun Jan 16 13:33:21 2022 from 192.168.6.3
 [5nEOS1>enable
 EOS1#
 EOS1#terminal length 0

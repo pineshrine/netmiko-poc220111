@@ -9,12 +9,12 @@ individual files in /usr/share/doc/*/copyright.
 
 Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
-Last login: Sun Jan 16 21:59:53 2022 from 192.168.6.3
+Last login: Sun Jan 16 22:33:40 2022 from 192.168.6.3
 
 ]0;pocadmin@VOS1: ~pocadmin@VOS1:~$ 
 ]0;pocadmin@VOS1: ~pocadmin@VOS1:~$ set terminal length 0
-exit
 ]0;pocadmin@VOS1: ~pocadmin@VOS1:~$ show configuration commands
+exit
 set interfaces ethernet eth0 address '192.168.6.27/24'
 set interfaces ethernet eth0 description 'MGT'
 set interfaces ethernet eth0 duplex 'auto'
