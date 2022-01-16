@@ -1,0 +1,134 @@
+192.168.6.26
+spawn ssh -x -l pocadmin 192.168.6.26
+User Authentication
+Enter password:
+
+Info: The max number of VTY users is 5, the number of current VTY users online is 1, and total number of terminal users online is 2.
+      The current login time is 2022-01-15 13:21:27.
+      The last login time is 2022-01-13 04:54:56 from 192.168.6.210 through SSH.
+<CLE1>
+<CLE1>screen-length 0 temporary
+Info: The configuration takes effect on the current user terminal interface only.
+<CLE1>more off
+Error: No file found "cfcard:/off".
+<CLE1>auto-complete off 
+      ^
+Error: Unrecognized command found at '^' position.
+<CLE1>
+<CLE1>disp cu
+!Software Version V200R005C10SPC607B607
+!Last configuration was updated at 2022-01-12 10:31:04+00:00 by SYSTEM automatically
+!Last configuration was saved at 2022-01-12 07:50:36+00:00
+#
+sysname CLE1
+#
+info-center loghost source MEth0/0/0
+info-center loghost 192.168.6.3 vpn-instance mgmt source-ip 192.168.6.26 level informational facility local0 local-time
+info-center logbuffer size 10240
+#
+device board 17 board-type CE-MPUB
+device board 1 board-type CE-LPUE
+#
+ntp server disable
+ntp ipv6 server disable
+ntp source-interface MEth0/0/0 vpn-instance mgmt
+ntp unicast-server 192.168.6.3 vpn-instance mgmt
+#
+ip vpn-instance mgmt
+ ipv4-family
+  route-distinguisher 1:100
+#
+aaa
+ undo local-user policy security-enhance
+ local-user pocadmin password irreversible-cipher $1c$FiSp'&5M}Q$f.8y0cPsP.aqxqXM<&w<!`[K-7xpzV|JxsXF"hXW$
+ local-user pocadmin service-type ssh
+ local-user pocadmin level 3
+ #
+ authentication-scheme default
+ #
+ authorization-scheme default
+ #
+ accounting-scheme default
+ #
+ domain default
+ #
+ domain default_admin
+#
+interface MEth0/0/0
+ description MGMT
+ undo shutdown
+ ip binding vpn-instance mgmt
+ ip address 192.168.6.26 255.255.255.0
+#
+interface GE1/0/0
+ shutdown
+#
+interface GE1/0/1
+ shutdown
+#
+interface GE1/0/2
+ shutdown
+#
+interface GE1/0/3
+ shutdown
+#
+interface GE1/0/4
+ shutdown
+#
+interface GE1/0/5
+ shutdown
+#
+interface GE1/0/6
+ shutdown
+#
+interface GE1/0/7
+ shutdown
+#
+interface GE1/0/8
+ shutdown
+#
+interface GE1/0/9
+ shutdown
+#
+interface NULL0
+#
+ip route-static vpn-instance mgmt 0.0.0.0 0.0.0.0 192.168.6.1
+#
+snmp-agent
+snmp-agent local-engineid 800007DB03386401111200
+snmp-agent community read cipher %^%#4W7y3CuA#I1p9k5D+^EXskw2"Bla'7P:FwP)C9!8VUxnF$88t%J(j/D^8!}0O|9YU:575T|`^_(y#RMF%^%#
+#
+snmp-agent sys-info version v2c
+snmp-agent sys-info version v3 disable
+snmp-agent target-host trap address udp-domain 192.168.6.3 source MEth0/0/0 vpn-instance mgmt params securityname cipher %^%#(Y2]CNC$]HVMYV"I{ewIz%aW;8k*iTl<%(,k*d.,%^%#
+#
+snmp-agent trap source MEth0/0/0
+#
+snmp-agent trap enable
+#
+lldp enable
+#
+stelnet ipv4 server enable
+ssh user pocadmin
+ssh user pocadmin authentication-type password
+ssh user pocadmin service-type stelnet
+ssh authorization-type default aaa
+#
+ssh server cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr aes256_cbc aes128_cbc 3des_cbc
+#
+ssh server dh-exchange min-len 1024
+#
+ssh client cipher aes256_gcm aes128_gcm aes256_ctr aes192_ctr aes128_ctr aes256_cbc aes128_cbc 3des_cbc
+#
+user-interface con 0
+#
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 3
+ protocol inbound ssh
+#
+vm-manager
+#
+return
+<CLE1>quit
+Info: The max number of VTY users is 5, and the number of current VTY users on line is 0.Connection to 192.168.6.26 closed.

@@ -1,0 +1,64 @@
+192.168.6.27
+spawn ssh -x -l pocadmin 192.168.6.27
+Welcome to VyOS
+pocadmin@192.168.6.27's password: 
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Thu Jan 13 13:55:33 2022 from 192.168.6.210
+
+]0;pocadmin@VOS1: ~pocadmin@VOS1:~$ 
+]0;pocadmin@VOS1: ~pocadmin@VOS1:~$ set terminal length 0
+]0;pocadmin@VOS1: ~pocadmin@VOS1:~$ show configuration commands
+exit
+set interfaces ethernet eth0 address '192.168.6.27/24'
+set interfaces ethernet eth0 description 'MGT'
+set interfaces ethernet eth0 duplex 'auto'
+set interfaces ethernet eth0 hw-id '50:00:00:09:00:00'
+set interfaces ethernet eth0 smp-affinity 'auto'
+set interfaces ethernet eth0 speed 'auto'
+set interfaces ethernet eth1 duplex 'auto'
+set interfaces ethernet eth1 hw-id '50:00:00:09:00:01'
+set interfaces ethernet eth1 smp-affinity 'auto'
+set interfaces ethernet eth1 speed 'auto'
+set interfaces ethernet eth2 duplex 'auto'
+set interfaces ethernet eth2 hw-id '50:00:00:09:00:02'
+set interfaces ethernet eth2 smp-affinity 'auto'
+set interfaces ethernet eth2 speed 'auto'
+set interfaces ethernet eth3 duplex 'auto'
+set interfaces ethernet eth3 hw-id '50:00:00:09:00:03'
+set interfaces ethernet eth3 smp-affinity 'auto'
+set interfaces ethernet eth3 speed 'auto'
+set interfaces loopback lo
+set protocols static route 0.0.0.0/0 next-hop 192.168.6.1
+set service lldp interface all
+set service snmp community exp-poc210909 authorization 'ro'
+set service snmp trap-target 192.168.6.3 community 'exp-poc210909'
+set service ssh disable-host-validation
+set service ssh port '22'
+set system config-management commit-revisions '100'
+set system console device ttyS0 speed '9600'
+set system domain-name 'nuva.net.br'
+set system host-name 'VOS1'
+set system login user pocadmin authentication encrypted-password '$6$iC1F54Xq6f$elMsbFTZTlck1O6VIyzkPWRUUxQFeDu7/0dFl3SsScEjfyeWCjjt5X87C6XShmoXbj4yaA/zPCJUSxYaS8Ind1'
+set system login user pocadmin authentication plaintext-password ''
+set system login user pocadmin level 'admin'
+set system login user vyos authentication encrypted-password '$6$0x3EYv.2$dy2rycifLXzJRu4sam3Gz4Miy39rJ2UqIE2zKaB3ZDbjQ03.PjQ3se0U92APydiAsCtWku.6OYqfaKqg/Csgn.'
+set system login user vyos authentication plaintext-password ''
+set system login user vyos level 'admin'
+set system name-server '8.8.8.8'
+set system ntp server 0.pool.ntp.org
+set system ntp server 1.pool.ntp.org
+set system ntp server 2.pool.ntp.org
+set system ntp server 192.168.6.3
+set system syslog global facility all level 'info'
+set system syslog global facility protocols level 'debug'
+set system syslog host 192.168.6.3 facility local4 level 'all'
+set system time-zone 'Asia/Tokyo'
+]0;pocadmin@VOS1: ~pocadmin@VOS1:~$ exit
+logout
+Connection to 192.168.6.27 closed.

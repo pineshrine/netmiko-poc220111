@@ -1,0 +1,97 @@
+192.168.6.21
+spawn ssh -x -l pocadmin 192.168.6.21
+
+
+
+IMPORTANT:  READ CAREFULLY
+Welcome to the Demo Version of Cisco IOS XRv (the "Software").
+The Software is subject to and governed by the terms and conditions
+of the End User License Agreement and the Supplemental End User
+License Agreement accompanying the product, made available at the
+time of your order, or posted on the Cisco website at
+www.cisco.com/go/terms (collectively, the "Agreement").
+As set forth more fully in the Agreement, use of the Software is
+strictly limited to internal use in a non-production environment
+solely for demonstration and evaluation purposes.  Downloading,
+installing, or using the Software constitutes acceptance of the
+Agreement, and you are binding yourself and the business entity
+that you represent to the Agreement.  If you do not agree to all
+of the terms of the Agreement, then Cisco is unwilling to license
+the Software to you and (a) you may not download, install or use the
+Software, and (b) you may return the Software as more fully set forth
+in the Agreement.
+
+
+Please login with any configured user/password, or cisco/cisco
+
+
+pocadmin@192.168.6.21's password: 
+
+
+RP/0/0/CPU0:XRV1#
+RP/0/0/CPU0:XRV1#terminal length 0
+Sat Jan 15 22:20:14.473 JST
+RP/0/0/CPU0:XRV1#terminal width 132
+Sat Jan 15 22:20:14.643 JST
+RP/0/0/CPU0:XRV1#show run
+Sat Jan 15 22:20:14.773 JST
+Building configuration...
+!! IOS XR Configuration 5.2.2
+!! Last configuration change at Wed Jan 12 11:30:18 2022 by CVAC
+!
+hostname XRV1
+clock timezone JST 9
+logging trap informational
+logging buffered 512000
+logging facility local5
+logging 192.168.6.3 vrf mgmt severity info
+username pocadmin
+ group netadmin
+ secret 5 $1$dfzN$EckUarJp3nysMdWEChp6P/
+ password 7 095C4F1A0A1218000F
+!
+vrf mgmt
+!
+snmp-server host 192.168.6.3 traps version 2c exp-poc210909
+snmp-server community exp-poc210909 RO
+ntp
+ server 192.168.6.3
+!
+control-plane
+ management-plane
+  out-of-band
+   vrf mgmt
+  !
+ !
+!
+ipv4 access-list SSH_FROM_LAN
+ 10 permit ipv4 192.168.0.0 0.0.255.255 any
+!
+interface MgmtEth0/0/CPU0/0
+ description MGT
+ vrf mgmt
+ ipv4 address 192.168.6.21 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0
+ shutdown
+!
+interface GigabitEthernet0/0/0/1
+ shutdown
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+router static
+ vrf mgmt
+  address-family ipv4 unicast
+   0.0.0.0/0 192.168.6.1
+  !
+ !
+!
+ssh server v2
+ssh server vrf mgmt ipv4 access-list SSH_FROM_LAN
+lldp
+!
+end
+
+RP/0/0/CPU0:XRV1#exitConnection to 192.168.6.21 closed.

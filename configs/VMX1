@@ -1,0 +1,42 @@
+192.168.6.23
+spawn ssh -x -l pocadmin 192.168.6.23
+Password:
+Last login: Thu Jan 13 04:53:52 2022 from 192.168.6.210
+--- JUNOS 17.1R1.8 Kernel 64-bit  JNPR-10.3-20170209.344539_build
+pocadmin@VMX1> 
+
+pocadmin@VMX1> set cli complete-on-space off 
+Disabling complete-on-space
+
+pocadmin@VMX1> set cli screen-length 0 
+Screen length set to 0
+
+pocadmin@VMX1> show config | dis set 
+set version 17.1R1.8
+set system host-name VMX1
+set system management-instance
+set system root-authentication encrypted-password "$6$BFL1NeEj$dbJw0oqay4zQjxekBwUuiQsZtLfF1UR90kiyArQO6gqS0iljcuPKFPs6slCHH2ssHcHtX1l8WK9imlHH/wxj20"
+set system login user pocadmin uid 2000
+set system login user pocadmin class super-user
+set system login user pocadmin authentication encrypted-password "$6$sTk/Rxox$whCwf58qxfuOaowTR4/mDked4jW1bq398ERV6eBeQktMXMWPHVo4h1hduNjsGft4p/or/bOef.XSQujcOz9Cc0"
+set system services ssh
+set system syslog user * any emergency
+deactivate system syslog user *
+set system syslog host 192.168.6.3 any notice
+set system syslog host 192.168.6.3 facility-override local3
+set system syslog file messages any notice
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+deactivate system syslog
+set system ntp server 192.168.6.3
+set interfaces fxp0 unit 0 family inet address 192.168.6.23/24
+set snmp community exp-poc210909 authorization read-only
+set snmp trap-group exp-poc210909 version all
+set snmp trap-group exp-poc210909 targets 192.168.6.3
+set protocols lldp interface all
+set routing-instances mgmt_junos description management
+set routing-instances mgmt_junos routing-options static route 0.0.0.0/0 next-hop 192.168.6.1
+
+pocadmin@VMX1> quit 
+
+Connection to 192.168.6.23 closed.

@@ -1,0 +1,369 @@
+192.168.6.25
+spawn ssh -x -l pocadmin 192.168.6.25
+Password: 
+
+
+
+CSR1>enable
+Password: 
+CSR1#
+CSR1#terminal length 0
+CSR1#terminal width 132
+CSR1#show run
+Building configuration...
+
+Current configuration : 10649 bytes
+!
+! Last configuration change at 17:56:48 JST Wed Jan 12 2022
+!
+version 17.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname CSR1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 512000
+enable secret 9 $9$uOW9bVeMpH.Uik$1CbKR4VivMzrNbMUEP/XvHY5LyaT6JpFNqd2bCu65cI
+!
+no aaa new-model
+clock timezone JST 9 0
+!
+!
+!
+!
+!
+!
+!
+ip domain name example.com
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-2682727751
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2682727751
+ revocation-check none
+ rsakeypair TP-self-signed-2682727751
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+!
+crypto pki certificate chain TP-self-signed-2682727751
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32363832 37323737 3531301E 170D3232 30313131 30313337 
+  34385A17 0D333230 31313130 31333734 385A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 36383237 
+  32373735 31308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 01009C4E 49F1C5B5 D1B4BCB2 156B950D F3E2164F 49FE6868 6480C419 
+  B6E7C80C EF868D43 1635F3B4 5DF94177 50F71C93 F360A69B 0BFDC8FB 1BCB4CD4 
+  C20D0F37 54DDC60E 87D16D71 B5637EE5 4E78E1A1 DFC8EC6C B299757A 3115D732 
+  17368FC8 AF43207E 90F25594 E9ACDCF0 8C8ADF5A 4B79FCD3 8B796269 1DE3F9F0 
+  81D86E41 9E039946 EB351EFA 53B25E48 83BB0360 1BA8E41D 79BF5730 A63FFFF0 
+  079C570A 8E0BB544 43BA1EDE 528C39D2 9D7FB03B 6C10909C 5145195B 87AC9516 
+  8259B0B2 308DD51C 63EA6CF8 9065EA1C BA4BE2D9 260BFA60 ADFDE4EE 94143BCC 
+  2728836A 2F57AE66 F3EBA812 336381C4 5F696080 469D0906 5197986B E5891E8E 
+  794BE14C 95890203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 14A6F2C1 ED11997F 026F5F61 9A774144 C78E4B30 
+  75301D06 03551D0E 04160414 A6F2C1ED 11997F02 6F5F619A 774144C7 8E4B3075 
+  300D0609 2A864886 F70D0101 05050003 82010100 90F9FDDE 010430B6 8C2CAE02 
+  A2949EA6 7AC9B6D6 C346825C 346EBE93 AFAA9D01 C1CCA24D D028B7EC BD263645 
+  DFB6DAAE C1B9B4BC 567D3094 818190D3 8E07F26F 6AA73AB6 11BC5C0D 4F5D44AA 
+  E204526C 6611A894 75ADD2CD 787A0F2C 5847CAA5 88648606 0575A972 098B22C3 
+  26812A58 1B2BC716 844FA307 76D831FF 26123E51 FA7ABA73 DC3D2C86 EA51FFF3 
+  E6883150 84C4334A EECDB55A ED3F2F1B 000D102E 7BF70B97 E5F7B101 8E9D753F 
+  5D8B775D 43883A7A 4F99E2C2 F914A119 918C09D9 0B67DDCA 270ECF3D 99852EDB 
+  CE1B3A70 0E6D944E 7D47ED62 4A6F2DC0 AF9AD7DF B8E5FEC8 AE48B67E F76D702F 
+  2C241A68 6B521306 73FB64EB 47F5B9C8 2F0186FC
+  	quit
+crypto pki certificate chain SLA-TrustPoint
+!
+license udi pid CSR1000V sn 9RCMJ1EOL5L
+diagnostic bootup level minimal
+memory free low-watermark processor 71507
+!
+!
+spanning-tree extend system-id
+!
+username pocadmin secret 9 $9$lXI5uCBPvXEr1k$NG1IBkF7WRsBnTHNgdMF9hI0ownrLtMMBgZrkjjLeG.
+!
+redundancy
+!
+!
+!
+!
+!
+!
+lldp run
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ description MGT
+ ip dhcp client client-id ascii cisco-5000.0008.0000-Gi1
+ ip address 192.168.6.25 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip http client source-interface GigabitEthernet1
+!
+ip route 0.0.0.0 0.0.0.0 192.168.6.1
+ip ssh version 2
+!
+!
+logging origin-id hostname
+logging facility local5
+logging host 192.168.6.3
+!
+!
+snmp-server community exp-poc210909 RO
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps vrrp
+snmp-server enable traps pfr
+snmp-server enable traps flowmon
+snmp-server enable traps ds1
+snmp-server enable traps entity-perf throughput-notif
+snmp-server enable traps call-home message-send-fail server-fail
+snmp-server enable traps tty
+snmp-server enable traps casa
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps eigrp
+snmp-server enable traps adslline
+snmp-server enable traps vdsl2line
+snmp-server enable traps license
+snmp-server enable traps smart-license
+snmp-server enable traps ethernet evc status create delete
+snmp-server enable traps ether-oam
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps entity-qfp mem-res-thresh throughput-notif
+snmp-server enable traps entity-state
+snmp-server enable traps diameter
+snmp-server enable traps bgp cbgp2
+snmp-server enable traps dlsw
+snmp-server enable traps entity-sensor
+snmp-server enable traps resource-policy
+snmp-server enable traps flash insertion removal lowspace
+snmp-server enable traps nhrp nhs
+snmp-server enable traps nhrp nhc
+snmp-server enable traps nhrp nhp
+snmp-server enable traps nhrp quota-exceeded
+snmp-server enable traps ipsla
+snmp-server enable traps cnpd
+snmp-server enable traps entity-diag boot-up-fail hm-test-recover hm-thresh-reached scheduled-test-fail
+snmp-server enable traps auth-framework sec-violation
+snmp-server enable traps bfd
+snmp-server enable traps cef resource-failure peer-state-change peer-fib-state-change inconsistency
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps dhcp
+snmp-server enable traps fru-ctrl
+snmp-server enable traps entity
+snmp-server enable traps event-manager
+snmp-server enable traps frame-relay
+snmp-server enable traps frame-relay subif
+snmp-server enable traps hsrp
+snmp-server enable traps pimstdmib neighbor-loss invalid-register invalid-join-prune rp-mapping-change interface-election
+snmp-server enable traps ipmulticast
+snmp-server enable traps isis
+snmp-server enable traps ip local pool
+snmp-server enable traps msdp
+snmp-server enable traps mvpn
+snmp-server enable traps ospfv3 state-change
+snmp-server enable traps ospfv3 errors
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps pppoe
+snmp-server enable traps cpu threshold
+snmp-server enable traps rsvp
+snmp-server enable traps l2tun session
+snmp-server enable traps l2tun pseudowire status
+snmp-server enable traps aaa_server
+snmp-server enable traps atm subif
+snmp-server enable traps pki
+snmp-server enable traps ike policy add
+snmp-server enable traps ike policy delete
+snmp-server enable traps ike tunnel start
+snmp-server enable traps ike tunnel stop
+snmp-server enable traps ipsec cryptomap add
+snmp-server enable traps ipsec cryptomap delete
+snmp-server enable traps ipsec cryptomap attach
+snmp-server enable traps ipsec cryptomap detach
+snmp-server enable traps ipsec tunnel start
+snmp-server enable traps ipsec tunnel stop
+snmp-server enable traps ipsec too-many-sas
+snmp-server enable traps gdoi gm-start-registration
+snmp-server enable traps gdoi gm-registration-complete
+snmp-server enable traps gdoi gm-re-register
+snmp-server enable traps gdoi gm-rekey-rcvd
+snmp-server enable traps gdoi gm-rekey-fail
+snmp-server enable traps gdoi ks-rekey-pushed
+snmp-server enable traps gdoi gm-incomplete-cfg
+snmp-server enable traps gdoi ks-no-rsa-keys
+snmp-server enable traps gdoi ks-new-registration
+snmp-server enable traps gdoi ks-reg-complete
+snmp-server enable traps gdoi ks-role-change
+snmp-server enable traps gdoi ks-gm-deleted
+snmp-server enable traps gdoi ks-peer-reachable
+snmp-server enable traps gdoi ks-peer-unreachable
+snmp-server enable traps firewall serverstatus
+snmp-server enable traps dsp card-status
+snmp-server enable traps dsp oper-state
+snmp-server enable traps dsp video-usage
+snmp-server enable traps dsp video-out-of-resource
+snmp-server enable traps frame-relay multilink bundle-mismatch
+snmp-server enable traps syslog
+snmp-server enable traps mpls rfc ldp
+snmp-server enable traps mpls ldp
+snmp-server enable traps mpls rfc traffic-eng
+snmp-server enable traps mpls traffic-eng
+snmp-server enable traps mpls fast-reroute protected
+snmp-server enable traps otn
+snmp-server enable traps pw vc
+snmp-server enable traps lisp
+snmp-server enable traps dial
+snmp-server enable traps sbc adj-status
+snmp-server enable traps sbc blacklist
+snmp-server enable traps sbc congestion-alarm
+snmp-server enable traps sbc h248-ctrlr-status
+snmp-server enable traps sbc media-source
+snmp-server enable traps sbc radius-conn-status
+snmp-server enable traps sbc sla-violation
+snmp-server enable traps sbc sla-violation-rev1
+snmp-server enable traps sbc svc-state
+snmp-server enable traps sbc qos-statistics
+snmp-server enable traps ethernet cfm alarm
+snmp-server enable traps alarms informational
+snmp-server enable traps rf
+snmp-server enable traps transceiver all
+snmp-server enable traps bulkstat collection transfer
+snmp-server enable traps vrfmib vrf-up vrf-down vnet-trunk-up vnet-trunk-down
+snmp-server enable traps mpls vpn
+snmp-server enable traps mpls rfc vpn
+snmp-server enable traps voice
+snmp-server enable traps ccme
+snmp-server enable traps srst
+snmp-server host 192.168.6.3 version 2c exp-poc210909 
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+ntp server 192.168.6.3
+!
+!
+!
+!
+!
+end
+
+CSR1#exit
+Connection to 192.168.6.25 closed.

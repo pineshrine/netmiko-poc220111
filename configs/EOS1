@@ -1,0 +1,69 @@
+192.168.6.24
+spawn ssh -x -l pocadmin 192.168.6.24
+Password: 
+Last login: Thu Jan 13 04:54:29 2022 from 192.168.6.210
+[5nEOS1>enable
+EOS1#
+EOS1#terminal length 0
+Pagination disabled.
+EOS1#terminal width 132
+Width set to 132 columns.
+EOS1#show run
+! Command: show running-config
+! device: EOS1 (vEOS, EOS-4.25.0F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model ribd
+!
+logging buffered 512000
+logging vrf management host 192.168.6.3 514
+!
+hostname EOS1
+!
+ntp server vrf management 192.168.6.3
+!
+snmp-server community exp-poc210909 ro
+snmp-server host 192.168.6.3 vrf management version 2c exp-poc210909
+snmp-server enable traps
+!
+spanning-tree mode mstp
+!
+no aaa root
+!
+username pocadmin secret sha512 $6$VSDfenKO6FgdEppY$HFdgWAaE03hE.Z0oLyujdWFXRQCM/njZd25.jkwo7JYNv8s9xQ2K2Aylhdpc9JDdtGrZr96AgUBv1fcVxEtbB.
+!
+vrf instance management
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+interface Ethernet3
+!
+interface Ethernet4
+!
+interface Ethernet5
+!
+interface Ethernet6
+!
+interface Ethernet7
+!
+interface Ethernet8
+!
+interface Management0
+!
+interface Management1
+   vrf management
+   ip address 192.168.6.24/24
+!
+no ip routing
+no ip routing vrf management
+!
+ip route vrf management 0.0.0.0/0 192.168.6.1
+!
+end
+EOS1#exit
+Connection to 192.168.6.24 closed.
