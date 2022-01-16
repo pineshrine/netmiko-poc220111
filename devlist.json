@@ -1,0 +1,50 @@
+[
+{
+	"device_type": "autodetect",
+	"host": "192.168.6.20",
+	"username": "pocadmin",
+	"password": "password"
+},
+{
+	"device_type": "autodetect",
+	"host": "192.168.6.21",
+	"username": "pocadmin",
+	"password": "password"
+},
+{
+	"device_type": "autodetect",
+	"host": "192.168.6.22",
+	"username": "pocadmin",
+	"password": "password"
+},
+{
+	"device_type": "autodetect",
+	"host": "192.168.6.23",
+	"username": "pocadmin",
+	"password": "Password"
+},
+{
+	"device_type": "autodetect",
+	"host": "192.168.6.24",
+	"username": "pocadmin",
+	"password": "password"
+},
+{
+	"device_type": "autodetect",
+	"host": "192.168.6.25",
+	"username": "pocadmin",
+	"password": "password"
+},
+{
+	"device_type": "autodetect",
+	"host": "192.168.6.26",
+	"username": "pocadmin",
+	"password": "password"
+},
+{
+	"device_type": "autodetect",
+	"host": "192.168.6.27",
+	"username": "pocadmin",
+	"password": "password"
+}
+]
