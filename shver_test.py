@@ -32,7 +32,7 @@ def login(device):
         connection.send_command('show version')
 
 if __name__ == "__main__":
-    with open(r"devlist.json", "r") as f:
+    with open(r"/root/netmiko-poc220111/devlist.json", "r") as f:
         device_info_list = json.load(f)
 
     logging.basicConfig(filename='netmiko_global.log', level=logging.DEBUG)
