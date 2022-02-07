@@ -1,7 +1,7 @@
 192.168.6.23
 spawn ssh -x -l pocadmin 192.168.6.23
 Password:
-Last login: Thu Jan 13 04:53:52 2022 from 192.168.6.210
+Last login: Sun Jan 16 13:33:16 2022 from 192.168.6.3
 --- JUNOS 17.1R1.8 Kernel 64-bit  JNPR-10.3-20170209.344539_build
 pocadmin@VMX1> 
 

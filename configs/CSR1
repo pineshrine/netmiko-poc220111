@@ -3,7 +3,6 @@ spawn ssh -x -l pocadmin 192.168.6.25
 Password: 
 
 
-
 CSR1>enable
 Password: 
 CSR1#
@@ -12,9 +11,9 @@ CSR1#terminal width 132
 CSR1#show run
 Building configuration...
 
-Current configuration : 10649 bytes
+Current configuration : 10666 bytes
 !
-! Last configuration change at 17:56:48 JST Wed Jan 12 2022
+! Last configuration change at 23:26:33 JST Sun Jan 16 2022
 !
 version 17.3
 service timestamps debug datetime msec
@@ -35,6 +34,8 @@ enable secret 9 $9$uOW9bVeMpH.Uik$1CbKR4VivMzrNbMUEP/XvHY5LyaT6JpFNqd2bCu65cI
 !
 no aaa new-model
 clock timezone JST 9 0
+!
+ip vrf mgmt
 !
 !
 !
@@ -157,7 +158,7 @@ lldp run
 !
 interface GigabitEthernet1
  description MGT
- ip dhcp client client-id ascii cisco-5000.0008.0000-Gi1
+ ip vrf forwarding mgmt
  ip address 192.168.6.25 255.255.255.0
  negotiation auto
  no mop enabled
@@ -187,13 +188,13 @@ ip http authentication local
 ip http secure-server
 ip http client source-interface GigabitEthernet1
 !
-ip route 0.0.0.0 0.0.0.0 192.168.6.1
+ip route vrf mgmt 0.0.0.0 0.0.0.0 192.168.6.1
 ip ssh version 2
 !
 !
 logging origin-id hostname
 logging facility local5
-logging host 192.168.6.3
+logging host 192.168.6.3 vrf mgmt
 !
 !
 snmp-server community exp-poc210909 RO
@@ -333,7 +334,7 @@ snmp-server enable traps mpls rfc vpn
 snmp-server enable traps voice
 snmp-server enable traps ccme
 snmp-server enable traps srst
-snmp-server host 192.168.6.3 version 2c exp-poc210909 
+snmp-server host 192.168.6.3 vrf mgmt version 2c exp-poc210909 
 !
 !
 !
@@ -357,7 +358,7 @@ call-home
  profile "CiscoTAC-1"
   active
   destination transport-method http
-ntp server 192.168.6.3
+ntp server vrf mgmt 192.168.6.3
 !
 !
 !
